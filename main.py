@@ -1,11 +1,12 @@
 
-from order import Order
+from order import Order, Item
 from payment_processor import CreditPaymentProcessor, DebitPaymentProcessor, PaypalPaymentProcessor, SMSAuthorizer
 
 
 def main():
+    item = Item("beans", 1, 100.0)
     order = Order()
-    order.add_item("Beans", 2, 100)
+    order.add_item(item)
     
     authorizer = SMSAuthorizer()
     

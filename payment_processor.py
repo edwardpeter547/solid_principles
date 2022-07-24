@@ -1,5 +1,5 @@
-from abc import ABC, abstractmethod, abstractproperty
-from random import randint, random
+from abc import ABC, abstractmethod
+from order import OrderStatus
 
 class PaymentProcessor(ABC):
     
@@ -44,7 +44,7 @@ class CreditPaymentProcessor(PaymentProcessor):
     def pay(self, order):
         print("Processing credit payment type")
         print(f"Verifying Security Code: {self.security_code + 2}")
-        order.status = "paid"
+        order.status = OrderStatus.paid
         
 
 
@@ -61,7 +61,7 @@ class DebitPaymentProcessor(PaymentProcessor):
             raise Exception("Not Authroized")
         print("processing debit payment type")
         print(f"verifying Security Code: {self.security_code + 1}")
-        order.status = "paid"
+        order.status = OrderStatus.paid
 
 
 
